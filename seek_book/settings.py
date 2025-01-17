@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-q#o!if%u5kpw+1=ozv3cii5*vdgz$2ldds)1*d!pkgv+$-wn=g
 DEBUG = True
 
 #ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['.amazonaws.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['.amazonaws.com', 'localhost', '127.0.0.1', 'aws.amazon.com']
 
 
 MIGRATION_MODULES = {
