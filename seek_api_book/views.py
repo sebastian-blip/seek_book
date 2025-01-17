@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Book
 from .serializers import BookSerializer
+from datetime import datetime
 
 class BookListView(APIView):
     def get(self, request):
@@ -43,11 +44,15 @@ class BookDetailView(APIView):
 
 class BookAveragePriceView(APIView):
     def get(self, request, year):
+        print(year)
+        start_date = datetime(year, 1, 1)  # 1 de enero del año
+        end_date = datetime(year + 1, 1, 1)  # 1 de enero del siguiente año
         pipeline = [
-            {"$match": {"published_date": {"$regex": f"^{year}"}}},
+            {"$match": {"published_date": {"$gte": start_date, "$lt": end_date}}},
             {"$group": {"_id": None, "average_price": {"$avg": "$price"}}}
         ]
         result = list(Book.collection.aggregate(pipeline))
+        print(result)
         if result:
             return Response({"average_price": result[0]["average_price"]})
         return Response({"average_price": 0})
