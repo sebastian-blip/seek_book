@@ -77,9 +77,9 @@ WSGI_APPLICATION = 'seek_book.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-
 MONGO_CLIENT = MongoClient("mongodb://localhost:27017/")
 MONGO_DB = MONGO_CLIENT["library"]
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

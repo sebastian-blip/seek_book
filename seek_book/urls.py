@@ -22,7 +22,6 @@ from seek_api_book.urls import urlpatterns as api_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(api_urls)),
-
 ]
 
 

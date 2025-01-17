@@ -44,7 +44,6 @@ class BookDetailView(APIView):
 
 class BookAveragePriceView(APIView):
     def get(self, request, year):
-        print(year)
         start_date = datetime(year, 1, 1)  # 1 de enero del año
         end_date = datetime(year + 1, 1, 1)  # 1 de enero del siguiente año
         pipeline = [
@@ -52,7 +51,6 @@ class BookAveragePriceView(APIView):
             {"$group": {"_id": None, "average_price": {"$avg": "$price"}}}
         ]
         result = list(Book.collection.aggregate(pipeline))
-        print(result)
         if result:
             return Response({"average_price": result[0]["average_price"]})
         return Response({"average_price": 0})
