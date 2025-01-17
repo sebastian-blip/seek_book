@@ -28,7 +28,9 @@ SECRET_KEY = 'django-insecure-q#o!if%u5kpw+1=ozv3cii5*vdgz$2ldds)1*d!pkgv+$-wn=g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.amazonaws.com', 'localhost', '127.0.0.1']
+
 
 MIGRATION_MODULES = {
     'auth': None,
@@ -96,8 +98,8 @@ REST_FRAMEWORK = {
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
-MONGO_CLIENT = MongoClient("mongodb://localhost:27017/")
+MONGO_URI = "mongodb+srv://betancourthingenieria:0tbivLy4xmwljMEq@library.06gzs.mongodb.net/"
+MONGO_CLIENT = MongoClient(MONGO_URI)
 MONGO_DB = MONGO_CLIENT["library"]
 
 # Password validation
