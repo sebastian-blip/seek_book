@@ -40,3 +40,16 @@ class BookDetailView(APIView):
             return Response(status=status.HTTP_204_NO_CONTENT)
         return Response({"error": "Not found"}, status=status.HTTP_404_NOT_FOUND)
 
+
+class BookAveragePriceView(APIView):
+    def get(self, request, year):
+        pipeline = [
+            {"$match": {"published_date": {"$regex": f"^{year}"}}},
+            {"$group": {"_id": None, "average_price": {"$avg": "$price"}}}
+        ]
+        result = list(Book.collection.aggregate(pipeline))
+        if result:
+            return Response({"average_price": result[0]["average_price"]})
+        return Response({"average_price": 0})
+
+
