@@ -30,6 +30,19 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+MIGRATION_MODULES = {
+    'auth': None,
+    'admin': None,
+    'contenttypes': None,
+    'sessions': None,
+    'sites': None,
+}
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.dummy',  # Utiliza un backend de base de datos ficticio
+    }
+}
 
 # Application definition
 
@@ -40,6 +53,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework_simplejwt',
     'seek_api_book'
 ]
 
@@ -74,12 +89,16 @@ TEMPLATES = [
 WSGI_APPLICATION = 'seek_book.wsgi.application'
 
 
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
+
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 MONGO_CLIENT = MongoClient("mongodb://localhost:27017/")
 MONGO_DB = MONGO_CLIENT["library"]
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -98,7 +117,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/

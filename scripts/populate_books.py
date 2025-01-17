@@ -2,7 +2,6 @@ from datetime import date, datetime
 from django.conf import settings
 
 
-
 books_data = [
     {"title": "El Gran Gatsby", "author": "F. Scott Fitzgerald", "published_date": datetime(1925, 4, 10),
      "genre": "Ficción", "price": 10.99},
@@ -15,7 +14,6 @@ books_data = [
     {"title": "El Principito", "author": "Antoine de Saint-Exupéry", "published_date": datetime(1943, 4, 6),
      "genre": "Fábula", "price": 7.99},
 ]
-
 
 collection = settings.MONGO_DB["books"]
 collection.insert_many(books_data)

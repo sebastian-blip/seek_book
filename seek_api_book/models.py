@@ -1,6 +1,8 @@
 from django.conf import settings
 from bson.objectid import ObjectId
 import datetime
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.db import models
 
 class Book:
     collection = settings.MONGO_DB["books"]
@@ -21,7 +23,6 @@ class Book:
         """Obtiene todos los libros."""
         books = list(Book.collection.find())
         for book in books:
-            # Convertir el _id de MongoDB a id
             book['id'] = str(book['_id'])
             del book['_id']  # Eliminar el campo _id si ya no lo necesitas
         return books
@@ -40,5 +41,3 @@ class Book:
     def delete(book_id):
         """Elimina un libro por su ID."""
         return Book.collection.delete_one({"_id": ObjectId(book_id)})
-
-
