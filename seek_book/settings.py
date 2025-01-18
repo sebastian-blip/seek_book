@@ -57,7 +57,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework_simplejwt',
-    'seek_api_book'
+    'seek_api_book',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
