@@ -5,9 +5,11 @@ from rest_framework import status
 from .models import Book
 from .serializers import BookSerializer
 from datetime import datetime
+from drf_yasg.utils import swagger_auto_schema
 
 
 class BookListView(APIView):
+
     def get(self, request):
         books = Book.get_all()  # Obtener todos los libros
 
@@ -21,6 +23,10 @@ class BookListView(APIView):
         # Devolver los resultados paginados
         return paginator.get_paginated_response(serializer.data)
 
+    @swagger_auto_schema(
+        request_body=BookSerializer,
+        responses={201: BookSerializer, 400: "Invalid data"},
+    )
     def post(self, request):
         serializer = BookSerializer(data=request.data)
         if serializer.is_valid():
