@@ -19,7 +19,7 @@ Componentes principales:
 
 Flujo de Trabajo:
 
-    El usuario puede interactuar con la API para agregar, actualizar o eliminar libros, autores y categorías.
+    El usuario puede interactuar con la API para agregar, actualizar o eliminar libros
     La base de datos se mantiene sincronizada con las operaciones realizadas a través de la API.
     La aplicación está diseñada para ser escalable y se puede desplegar en AWS Fargate para manejar el tráfico de manera eficiente.
 
