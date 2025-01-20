@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-q#o!if%u5kpw+1=ozv3cii5*vdgz$2ldds)1*d!pkgv+$-wn=g
 DEBUG = True
 
 #ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['.amazonaws.com', 'localhost', '127.0.0.1', 'aws.amazon.com']
+ALLOWED_HOSTS = ['*']
 
 
 MIGRATION_MODULES = {
@@ -99,7 +99,7 @@ REST_FRAMEWORK = {
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-MONGO_URI = "mongodb+srv://betancourthingenieria:0tbivLy4xmwljMEq@library.06gzs.mongodb.net/"
+MONGO_URI = ""
 MONGO_CLIENT = MongoClient(MONGO_URI)
 MONGO_DB = MONGO_CLIENT["library"]
 
